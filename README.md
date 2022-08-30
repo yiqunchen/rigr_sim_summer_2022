@@ -1,4 +1,4 @@
-# Estimating the power of a joint test in lm/glm with robust SE
+# Estimating the power of ANOVA in lm/glm with robust SE
 
 This set of simulation code was used in `rigr` package development during summer 2022. The main purpose of the code is to understand the power behaviour of `anova` and `lincom` functions in `rigr`.
 
