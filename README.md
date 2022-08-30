@@ -5,7 +5,7 @@ This set of simulation code was used in `rigr` package development during summer
 1. The code in `joint_test_lm.R` performs power simulation for a linear regression model with hetereoskedastic error (drawn from an independent gamma distribution) and reproduces the following figure.
 
 <br>
-<img src="./lm_hetero_anova_power.png" align="right" width="300px"/>
+![](src="./lm_hetero_anova_power.png" align="right" width="300px"/)
 
 2. The code in `anova_glm_test_poisson.R` performs power simulation for a Poisson regression model and reproduces the following figure.
 
