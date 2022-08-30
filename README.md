@@ -2,7 +2,9 @@
 
 This set of simulation code was used in `rigr` package development during summer 2022. The main purpose of the code is to understand the power behaviour of `anova` and `lincom` functions in `rigr`.
 
+<p>
 1. The code in `joint_test_lm.R` performs power simulation for a linear regression model with hetereoskedastic error (drawn from an independent gamma distribution) and reproduces the following figure.
+</p>
 
 <p>
 <img src="./lm_hetero_anova_power.png" align="right" width="300px"/>
