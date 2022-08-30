@@ -150,8 +150,8 @@ p_power <- df_p0_plot %>%
   scale_linetype(name = "",labels=c("LRT","Wald w/ Naive SE","Wald w/ robust SE & F dist."))
 
 
-png("~/Desktop/summer_2022/glm_poisson_anova_power.png",
-    width=6.5,height=6, units= "in", res=400)
+png("~/Desktop/summer_2022/glm_logistic_anova_power.png",
+    width=10,height=9, units= "in", res=400)
 p_power
 dev.off()
 

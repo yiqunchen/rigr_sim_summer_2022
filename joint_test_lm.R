@@ -106,6 +106,33 @@ for (beta_2 in beta_2_seq){
     p_val_collection_30_wald_no_f[i] <- curr_p_wald_no_f
   }
   
+  # sub 10
+  for (i in c(1:n_sim)){
+    mri_sub <- mri %>% slice_sample(n=10)
+    cat(i,"\n")
+    y_sim <- beta_0 + mri_sub$weight*beta_1 + 
+      mri_sub$height*beta_2 + rnorm(nrow(mri_sub), sd = rgamma(nrow(mri_sub),shape=10))
+    curr_reg <- regress("mean", y_sim~weight+height,data=mri_sub)
+    testC <- matrix(c(0, 1, 0, 0, 0, 1), byrow = TRUE, nrow = 2)
+    curr_joint_naive <- lincom(curr_reg, testC, null.hypoth = c(0, 0),
+                               joint.test = TRUE, robustSE = F)
+    
+    curr_joint_f <- lincom(curr_reg, testC, null.hypoth = c(0, 0),
+                           joint.test = TRUE,useFdstn=TRUE)
+    
+    curr_joint_no_f <- lincom(curr_reg, testC, null.hypoth = c(0, 0),
+                              joint.test = TRUE)
+    
+    curr_p_wald <- curr_joint_f$printMat[,4]
+    curr_p_naive <- curr_joint_naive$printMat[,3]
+    curr_p_wald_no_f <- curr_joint_no_f$printMat[,3]
+    
+    p_val_collection_10_wald[i] <- curr_p_wald
+    p_val_collection_10_naive[i] <- curr_p_naive
+    p_val_collection_10_wald_no_f[i] <- curr_p_wald_no_f
+  }
+  
+  
   df_p0_summary_wald <- rbind(df_p0_summary_wald, 
                               data.frame(
                                 p_val_collection_10 = p_val_collection_10_wald,
@@ -173,7 +200,7 @@ p_power <- df_p0_plot %>%
   guides(colour = guide_legend(override.aes = list(size=1),nrow=2,byrow=TRUE),
          linetype = guide_legend(nrow=2,byrow=TRUE,override.aes = list(length=2)))+
   scale_colour_brewer(name="",palette="Dark2",
-                      labels = unname(TeX(c('$n=100$','$n=30$','$n=735$'))))+
+                      labels = unname(TeX(c('$n=10$','$n=100$','$n=30$','$n=735$'))))+
   scale_linetype(name = "",labels=c("Wald w/ robust SE and Chi-sq",
                                     "Wald w/ Naive SE",
                                     "Wald w/ robust SE & F dist."))
