@@ -20,8 +20,6 @@ p_val_collection_30_wald <- rep(NA, n_sim)
 p_val_collection_30_naive <- rep(NA, n_sim)
 p_val_collection_30_LRT <- rep(NA, n_sim)
 p_val_collection_10_wald <- rep(NA, n_sim)
-p_val_collection_10_naive <- rep(NA, n_sim)
-p_val_collection_10_LRT <- rep(NA, n_sim)
 
 df_p0_summary_wald <- data.frame()
 df_p0_summary_naive<- data.frame()
